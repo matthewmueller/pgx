@@ -1321,6 +1321,8 @@ func Decode(vr *ValueReader, d interface{}) error {
 			}
 			*v = d
 		}
+	case PgxScanner:
+		v.ScanPgx(vr)
 	default:
 		if v := reflect.ValueOf(d); v.Kind() == reflect.Ptr {
 			el := v.Elem()
